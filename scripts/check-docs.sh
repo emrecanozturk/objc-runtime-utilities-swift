@@ -21,12 +21,23 @@ for file in "${required_wiki_files[@]}"; do
   fi
 done
 
-if ! rg -q "What This Can and Cannot Do" README.md docs/CAN-CANNOT.md; then
+contains_text() {
+  local pattern="$1"
+  shift
+
+  if command -v rg >/dev/null 2>&1; then
+    rg -q "$pattern" "$@"
+  else
+    grep -Rqs "$pattern" "$@"
+  fi
+}
+
+if ! contains_text "What This Can and Cannot Do" README.md docs/CAN-CANNOT.md; then
   echo "Expected can/cannot documentation was not found." >&2
   exit 1
 fi
 
-if ! rg -q "App Store" README.md docs/APP-STORE-SAFETY.md docs/wiki/App-Store-Safety.md; then
+if ! contains_text "App Store" README.md docs/APP-STORE-SAFETY.md docs/wiki/App-Store-Safety.md; then
   echo "Expected App Store safety documentation was not found." >&2
   exit 1
 fi

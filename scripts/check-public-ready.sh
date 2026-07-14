@@ -33,7 +33,13 @@ for file in "${required_files[@]}"; do
   fi
 done
 
-if rg -n "Egemsoft|TestCribe|internal-only|TODO:|FIXME:" README.md Sources Tests docs Examples .github >/tmp/oru-public-ready-scan.txt; then
+if command -v rg >/dev/null 2>&1; then
+  scan_command=(rg -n "Egemsoft|TestCribe|internal-only|TODO:|FIXME:" README.md Sources Tests docs Examples .github)
+else
+  scan_command=(grep -RInE "Egemsoft|TestCribe|internal-only|TODO:|FIXME:" README.md Sources Tests docs Examples .github)
+fi
+
+if "${scan_command[@]}" >/tmp/oru-public-ready-scan.txt; then
   cat /tmp/oru-public-ready-scan.txt >&2
   echo "Public readiness scan found blocked terms." >&2
   exit 1
