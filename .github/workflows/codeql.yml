@@ -22,5 +22,6 @@ jobs:
       - uses: github/codeql-action/init@v4
         with:
           languages: swift
-      - uses: github/codeql-action/autobuild@v4
+      - name: Build
+        run: swift build
       - uses: github/codeql-action/analyze@v4
