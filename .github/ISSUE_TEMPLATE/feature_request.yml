@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest a runtime utility or bridge
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What runtime or SwiftUI/UIKit interop problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What API shape do you want?
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety considerations
+      description: Does this involve swizzling, private selectors, or undocumented behavior?
+    validations:
+      required: false

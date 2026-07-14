@@ -1,0 +1,5 @@
+ObjC Runtime Utilities for Swift and SwiftUI
+
+This project wraps public Objective-C runtime and Foundation APIs for Swift
+applications. It does not include private Apple headers, private frameworks,
+or private API shims.

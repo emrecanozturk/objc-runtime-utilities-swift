@@ -1,0 +1,20 @@
+name: Documentation
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check docs
+        run: bash scripts/check-docs.sh
+      - name: Check public surface
+        run: bash scripts/check-public-ready.sh

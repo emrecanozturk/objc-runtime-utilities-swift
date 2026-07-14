@@ -1,0 +1,31 @@
+name: Bug report
+description: Report an issue with ObjC Runtime Utilities
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version or commit
+    validations:
+      required: true
+  - type: input
+    id: toolchain
+    attributes:
+      label: Swift and Xcode version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include a small test case or code snippet.
+    validations:
+      required: true
